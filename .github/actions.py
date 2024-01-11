@@ -58,7 +58,7 @@ def transform_github_url(input_url):
 
 
 def register(pkg_name, version, author, short_desc, homepage):
-    link = f'git+{homepage}@{version}'
+    link = f'{homepage}/releases/download/{version}/{pkg_name}-{version}-py3-none-any.whl'
     long_desc = transform_github_url(homepage)
     # Read our index first
     with open(INDEX_FILE) as html_file:
@@ -147,7 +147,7 @@ def update(pkg_name, version):
         main_version_span = soup.find('span', id='latest-main-version')
         main_version_span.string = version
     anchor.string = norm_version
-    anchor['href'] = f"git+{link}@{version}#egg={norm_pkg_name}-{norm_version}"
+    anchor['href'] = f"{link}/releases/download/{version}/{pkg_name}-{version}-py3-none-any.whl"
 
     # Add it to our index
     original_div.insert_after(new_div)
