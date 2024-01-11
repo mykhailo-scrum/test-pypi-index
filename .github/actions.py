@@ -31,7 +31,7 @@ def normalize(name):
 
 
 def normalize_whl(pkg_name):
-    return re.sub(r"[-]", "_", name).lower()
+    return re.sub(r"[-]", "_", pkg_name).lower()
 
 
 def normalize_version(version):
